@@ -75,10 +75,10 @@ for i=1:N+1
     r_r_dot = xd(3) - 2 * lambda * e_r - lambda^2 * e_psi;
     
     switch flag
-        case flag==1        % sgm(sigma)
+        case 1              % sgm(sigma)
             delta_c = (1/K_hat) * ( T_hat * r_r_dot + (n3 * r^2 + n1) * r_r... 
                 - K_sigma * sign(sigma) );
-        case flag == 2      % tanh(sigma)
+        case 2              % tanh(sigma)
             delta_c = (1/K_hat) * ( T_hat * r_r_dot + (n3 * r^2 + n1) * r_r... 
                 - K_sigma * tanh(sigma/phi) );
         otherwise           % sat(sigma)
