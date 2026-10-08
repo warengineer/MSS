@@ -22,4 +22,4 @@ q = [cy * cp * cr + sy * sp * sr
      sy * cp * sr + cy * sp * cr
      sy * cp * cr - cy * sp * sr];
 
-q = q/(q'*q);
+q = q/norm(q);
