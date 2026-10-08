@@ -39,15 +39,10 @@ if nargin~=10, error('the number of inputs must be 10');end
 
 % Conversions and constants
 rho_a = 1.224;                     % Density of air at 15 C
-gamma_r_deg = rad2deg(gamma_r);    % Convert gamma_r from radians to degrees
-
-% Ensure gamma_r is within the range of 0 to 360 degrees
-gamma_r_deg = mod(gamma_r_deg, 360);
-
-% Adjust gamma_r_deg to be within 0 to 180 degrees
-if gamma_r_deg > 180
-    gamma_r_deg = 360 - gamma_r_deg;
-end
+% Wrap gamma_r to [-pi, pi): the tables use its magnitude (0 to 180 degrees),
+% the side force and the yaw moment its sign (also element by element for a vector)
+gamma_r = mod(gamma_r + pi, 2 * pi) - pi;
+gamma_r_deg = abs(rad2deg(gamma_r));
 
 % CX_data = [gamma_r(deg) A0 A1	A2	A3	A4	A5	A6	] 
 CX_data= [...  
