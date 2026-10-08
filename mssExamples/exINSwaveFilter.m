@@ -49,7 +49,7 @@ white_noise = randn(size(t));
 s = tf('s'); 
 
 H_s = K_wave * s / (s^2 + 2 * omega_0 * lambda * s + omega_0^2);
-H_z = c2d(H_s, h, 'tutsin');
+H_z = c2d(H_s, h, 'tustin');
 u_LF = 1 * sawToothWave(0.1 * t);
 u = u_LF + lsim(H_z, white_noise, t); % LF + WF position
 
