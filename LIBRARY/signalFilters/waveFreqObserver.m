@@ -20,7 +20,7 @@ function [x_next, omega_e] = waveFreqObserver(x, y, w_f, K_f, h)
 %   h     - Sampling time
 %
 % Outputs:
-%   x_next  - Propagated state vector at time k+1 (5x1 vector)
+%   x_next  - Propagated state vector at time k+1 (3x1 vector)
 %   omega_e - Estimate of the wave encounter frequency at time k
 %
 % Example usage: 
