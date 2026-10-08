@@ -32,7 +32,7 @@ pi_v = atan2( -e_z, sqrt( e_x^2 + e_y^2) );
 
 % Rotation matrices
 R_z = [ cos(pi_h)   -sin(pi_h)   0
-       -sin(pi_h)    cos(pi_h)   0
+        sin(pi_h)    cos(pi_h)   0
         0             0          1 ];
 
 R_y = [ cos(pi_v)   0       sin(pi_v) 
