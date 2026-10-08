@@ -16,7 +16,7 @@ function [xdot,U,M] = osv(x,ui,Vc,betaVc)
 % Inputs: 
 %   x: state vector x = [ u v w p q r x y z phi theta psi ]'
 %   ui: control inputs ui = [n1, n2, n3, n4, alpha1, alpha2] where n1, n2, 
-%       n3 and n4 are the propeller speeds (rps). The last two arguments 
+%       n3 and n4 are the propeller speeds (rpm). The last two arguments 
 %       alpha1 and alpha2 are the azimuth angles (rad)
 %   Vc: OPTIONAL current speed
 %   betaVc: OPTIONAL current direction (rad)
