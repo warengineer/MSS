@@ -25,6 +25,7 @@ function msi = HMmsi(a_z, w_e)
 %   2024-08-07 : Minor changes of notation/documentation. 
 %   2025-02-25 : Replaced abs(a_z) with the rms value. Converted encounter 
 %                frequencies from rad/s to Hz
+%   2026-10-09 : w_e in rad/s in mu_MSI again, as in Fossen (2011, eq. 13.149)
 
 % Ensure inputs are column vectors
 a_z = a_z(:);
@@ -37,11 +38,9 @@ a_z_rms = sqrt( mean(a_z.^2) );
 g = 9.81;  % Gravity (m/s²)
 epsilon = 1e-6; % Small value to prevent log(0)
 
-% Convert encounter frequency from rad/s to Hz
-f_e = w_e / (2 * pi);
 
 % Compute mu_MSI from O'Hanlon & McCauley model
-mu_MSI = -0.819 + 2.32 * (log10(max(f_e, epsilon))).^2;
+mu_MSI = -0.819 + 2.32 * (log10(max(w_e, epsilon))).^2;   % w_e in rad/s
 
 % Compute I factor
 I = (-log10(a_z_rms / g) + mu_MSI) / (0.4 * sqrt(2));
