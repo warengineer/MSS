@@ -51,7 +51,7 @@ function [psi_ref,y_e,beta_c_hat,k_active] = ALOSpsi(x,y,Delta_h,gamma_h,h,R_swi
 %   Control Systems Technology 31(6),2887-2894. 
 %   https://doi.org/10.1109/TCST.2023.3259819
 %
-% For course control use the functions LOSchi.m and ILOSchi.m.
+% For course control use the function LOSchi.m.
 % See also: SIMotter.m and demoOtterUSVPathFollowingHeadingControl.slx
 % for example implementations using an Otter USV.
 %  

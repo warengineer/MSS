@@ -3,7 +3,7 @@ function [chi_ref, y_e] = LOSchi(x, y, Delta_h, R_switch, wpt)
 % LOSchi computes the desired course angle, chi_ref, and cross-track
 % error, y_e, for paths that consist of straight lines connecting waypoints 
 % (wpt.pos.x, wpt.pos.y). The desired course angle is computed using the 
-% adaptive LOS (ALOS) guidance law 
+% proportional LOS guidance law 
 %
 %  chi_ref[k] = pi_h - atan( y_e[k] / Delta_h ) 
 %
@@ -40,7 +40,6 @@ function [chi_ref, y_e] = LOSchi(x, y, Delta_h, R_switch, wpt)
 %    y_e:     cross-track error (m)
 %
 % For heading control use the functions ILOSpsi.m and ALOSpsi.m.
-% See also: crosstracHermiteLOS.m
 %
 % Ref. Fossen, T. I. (2027). Handbook of Marine Craft Hydrodynamics and
 % Motion Control, 3rd ed., John Wiley & Sons Ltd., Chichester, UK.

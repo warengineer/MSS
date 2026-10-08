@@ -7,7 +7,7 @@ function [psi_ref, y_e] = ILOSpsi(x,y,Delta_h,kappa,h,R_switch,wpt)
 %
 %  psi_d[k] = pi_h - atan( Kp * (y_e[k] + kappa * y_int[k]) ), Kp = 1/Delta
 %
-%  y_int[k+1] = y_int[k+1] + h * Delta_h ...
+%  y_int[k+1] = y_int[k] + h * Delta_h ...
 %       * y_e[k] / ( Delta_h^2 + ( y_e[k] + kappa * y_int[k] )^2 )
 %
 % where pi_h is the path-tangential (azimuth) angle with respect to the 
@@ -49,7 +49,7 @@ function [psi_ref, y_e] = ILOSpsi(x,y,Delta_h,kappa,h,R_switch,wpt)
 %   presence of Constant Ocean Currents. Proc. of the 47th IEEE Conference 
 %   on Decision and Control, pp. 4984–4991, Cancun, Mexico.
 %
-% For course control use the functions LOSchi.m and ILOSchi.m.
+% For course control use the function LOSchi.m.
 % See also: SIMotter.m and demoOtterUSVPathFollowingHeadingControl.slx
 % for example implementations using an Otter USV.
 %  
