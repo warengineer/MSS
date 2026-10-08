@@ -31,7 +31,7 @@ t = (0:h:T_final)';             % Time vector from 0 to T_final
 nTimeSteps = length(t);         % Number of time steps
 
 % Notch filter parameters
-w_0 = 0.8; % Notch frequency in Hz
+w_0 = 0.8; % Notch frequency (rad/s)
 zeta_notch = 0.1; % Damping factor of notch filter
 zeta_IIR = 0.5; % Damping factor of IIR filter
 
