@@ -3,8 +3,9 @@ function x_hat = EKF_5states(position1, position2,...
 % This function estimates the Speed Over Ground (SOG), Course Over Ground 
 % (COG), and course rate from GNSS positions measurements (xn[k], yn[k]) 
 % expressed in NED or latitude-longitude (mu[k], l[k]) using the 5-state 
-% discrete-time extended Kalman filter (EKF). The output is the predicted 
-% state vector x_hat[k+1], which includes the positions (x, y), SOG (U), 
+% discrete-time extended Kalman filter (EKF). The output is the corrected 
+% state vector x_hat[k] (the prediction x_prd[k+1] is kept as a persistent 
+% variable), which includes the positions (x, y), SOG (U), 
 % COG (chi), and course rate (omega_chi). The EKF discrete-time state-space 
 % model is (Fossen and Fossen, 2021):
 %
