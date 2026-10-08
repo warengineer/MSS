@@ -77,6 +77,7 @@ delta           = BDATA(vessel_no,4);
 kappa           = BDATA(vessel_no,5);
 
 Hm  = ALw/Loa; 
+gamma_r = mod(gamma_r + pi, 2 * pi) - pi;   % wrap to [-pi, pi)
 
 % Two cases for CDl
 for i = 1:length(gamma_r)
@@ -94,7 +95,7 @@ den = 1 - 0.5 * delta * (1-CDl/CDt) .* sin(2 * gamma_r).^2;
 CX = -CDlAF .* cos(gamma_r) ./ den;
 CY =  CDt * sin(gamma_r) ./ den;
 CK =  kappa * (sH/Hm) * CY;
-CN =  ( sL/Loa - 0.18 * (gamma_r - pi/2) ) .* CY;
+CN =  ( sL/Loa - 0.18 * (abs(gamma_r) - pi/2) ) .* CY;   % symmetric in gamma_r
 
 % Wind forces and moment
 tauX = 0.5 * CX * rho_a * V_r^2 * AFw;
