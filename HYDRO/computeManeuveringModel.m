@@ -73,7 +73,10 @@ function vessel = computeManeuveringModel(vessel, omega_p, ...
 %
 % Inputs:
 %   vessel         - Structure containing vessel hydrodynamic data
-%   omega_p        - Wave peak frequency (rad/s), typically 0.8 to 1.0 rad/s
+%   omega_p        - PM spectrum parameter (rad/s), typically 0.8 to 1.0 rad/s,
+%                    in S(omega) = alpha/omega^5 * exp(-0.74*(omega_p/omega)^4)
+%                    (omega_p = g/V_19.4). The spectral peak lies at
+%                    (4*0.74/5)^(1/4) * omega_p = 0.877 * omega_p.
 %   aperiodicDamping - Floating vessel: kappa_126, the dimensionless relative
 %                     viscous-damping increments for DOFs 1, 2 and 6. The
 %                     default is [0.05 0.05 0.05].
@@ -88,7 +91,7 @@ function vessel = computeManeuveringModel(vessel, omega_p, ...
 %   plotFlag       - Set to 1 to plot A(omega) and B(omega), 0 otherwise
 %
 % Outputs:
-%   vessel.powerBased.omega_p - Wave spectrum peak frequency used for
+%   vessel.powerBased.omega_p - PM spectrum parameter used for
 %                               power-based weighting
 %   vessel.powerBased.A_eq    - 6x6x equivalent added mass matrix
 %   vessel.powerBased.B_eq    - 6x6 equivalent damping matrix
@@ -136,9 +139,11 @@ function vessel = computeManeuveringModel(vessel, omega_p, ...
 %      when they are not supplied.
 %   2026-10-04 Added the submerged-vehicle formulation using T_1236 and
 %      delta_zeta_45. The G(3,3) restoring coefficient validates the call.
+%   2026-10-09 Help text: omega_p is the PM spectrum parameter; the
+%      weighting peaks at 0.877*omega_p.
 
 % ------------------------------------------------------------------------------
-% Wave-spectrum peak frequency. Reuse a saved value when the argument is
+% PM spectrum parameter omega_p. Reuse a saved value when the argument is
 % omitted; an explicitly empty argument requests a new value.
 % ------------------------------------------------------------------------------
 if nargin < 2
@@ -147,10 +152,10 @@ if nargin < 2
             ~isempty(vessel.powerBased.omega_p)
         omega_p = vessel.powerBased.omega_p;
     else
-        omega_p = input('Wave-spectrum peak frequency omega_p (rad/s): ');
+        omega_p = input('PM spectrum parameter omega_p (rad/s): ');
     end
 elseif isempty(omega_p)
-    omega_p = input('Wave-spectrum peak frequency omega_p (rad/s): ');
+    omega_p = input('PM spectrum parameter omega_p (rad/s): ');
 end
 
 % ------------------------------------------------------------------------------
