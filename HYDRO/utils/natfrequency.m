@@ -43,6 +43,8 @@ function w_n = natfrequency(vessel,dof,w_0,speed,LCF)
 % Revisions: 2008-01-23 only for 1 DOF
 %            2008-10-28 updated to solve 6-DOF coupled motions
 %            2019-05-03 updated documentation
+%            2026-10-09 6 DOF: heave-pitch eigenvalues sorted at each
+%                       frequency (the eig order swapped the modes)
 % _________________________________________________________________________
 %
 % MSS HYDRO is a Matlab toolbox for guidance, navigation and control.
@@ -129,7 +131,7 @@ else  %  6 DOF (no spring in DOF 1,2,6)
        
        AA = inv(M)*G;
        AA = AA([3,5],[3,5]);
-       lambda(:,i) = eig(AA);
+       lambda(:,i) = sort(eig(AA));  % continuous branches, heave below pitch
        
     end
         
