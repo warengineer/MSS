@@ -25,7 +25,7 @@ function SIMremus100()
 % References:
 %   E. M. Coates and T. I. Fossen (2026). A Spherical Amplitude–Phase Formulation 
 %       for 3-D Adaptive Line-of-Sight (ALOS) Guidance with USGES Stability
-%       Guarantees, Automatica 194, 113149S. 
+%       Guarantees, Automatica 194, 113149. 
 %   T. I. Fossen & P. Aguiar (2024). A Uniform Semiglobal Exponential  
 %      Stable Adaptive Line-of-Sight (ALOS) Guidance Law for 3-D Path 
 %      Following. Automatica, 163, 111556. 
@@ -407,9 +407,9 @@ vc = Vc .* sin(betaVc);
 % Crab angles, AoA and SSA
 U = sqrt(u.^2+v.^2+w.^2); % Speed
 gamma = asin( (u.*sin(theta)-(v.*sin(phi)+w.*cos(phi)).*cos(theta)) ./ U );
-alpha_c = theta - gamma; % Horizontal crab angle
+alpha_c = theta - gamma; % Vertical crab angle
 beta_c = atan2(v.*cos(phi)-w.*sin(phi), ...
-    u.*cos(theta)+(v.*sin(phi)+w.*cos(phi)).*sin(theta)); % Vertical crab angle
+    u.*cos(theta)+(v.*sin(phi)+w.*cos(phi)).*sin(theta)); % Horizontal crab angle
 alpha = asin( (w-wc) ./ (u-uc) ); % AoA
 beta  = atan2( (v-vc), (u-uc) ); % SSA
 

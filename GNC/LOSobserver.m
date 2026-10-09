@@ -1,7 +1,7 @@
 function [LOSangle, LOSrate] = LOSobserver(LOSangle, LOSrate, LOScommand, h, K_f)
 % This function estimates the desired Line-Of-Sight (LOS) angle and
 % rate from a discrete-time LOS guidance law command, LOScommand[k], which
-% can be computed using the guidance laws LOSchi.m, LOSpsi.m, ILOSpsi.m,
+% can be computed using the guidance laws LOSchi.m, ILOSpsi.m,
 % ALOSpsi.m, etc. The observer propagates the estimate of the LOS angle
 % according to
 %

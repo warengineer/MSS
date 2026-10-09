@@ -1,11 +1,11 @@
 function [x_d,v_d,a_d] = refModel(x_d,v_d,a_d,x_ref,v_max,zeta_d,w_d,h,eulerAngle)
-% Poisition, velocity and acceleration reference model based on the method
+% Position, velocity and acceleration reference model based on the method
 % by Fossen (2027, Chapter 12.1.1).
 %
 % Inputs:  
 %   x_d: current desired position at time t_k
 %   v_d: current desired velocity at time t_k
-%   a_d: current desired velocity at time t_k
+%   a_d: current desired acceleration at time t_k
 %   x_ref: commanded position 
 %   v_max: maximum velocity
 %   zeta_d: desired relative damping factor
@@ -16,7 +16,7 @@ function [x_d,v_d,a_d] = refModel(x_d,v_d,a_d,x_ref,v_max,zeta_d,w_d,h,eulerAngl
 % Outputs:  
 %   x_d: desired position at time: t_k+1 = t_k + h
 %   v_d: desired velocity at time: t_k+1 = t_k + h
-%   a_d: desired velocity at time: t_k+1 = t_k + h
+%   a_d: desired acceleration at time: t_k+1 = t_k + h
 %  
 % Author:    Thor I. Fossen
 % Date:      2024-02-05
