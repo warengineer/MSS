@@ -10,7 +10,7 @@
 %
 % Author:    Thor I. Fossen
 % Date:      2019-05-01
-% Revisions: 
+% Revisions: 2026-10-09 Heave curve w3^2./Zm3w as roll and pitch (was w3^3)
 
 load supply;		% Load supply data (ShipX)
 
@@ -25,7 +25,7 @@ figure(gcf)
 
 w = w3 * wr;
 Zm3w = sqrt((w.^2)*(2*z3*w3)^2 + (w3^2-w.^2).^2);  % Zm3 * w_e
-plot(wr, w3^3./Zm3w,'-.','linewidth',2),hold on
+plot(wr, w3^2./Zm3w,'-.','linewidth',2),hold on
 
 w = w4 * wr;
 Zm4w = sqrt((w.^2)*(2*z4*w4)^2 + (w4^2-w.^2).^2);  % Zm4 * w_e
