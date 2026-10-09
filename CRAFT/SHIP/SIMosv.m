@@ -33,8 +33,8 @@ function SIMosv()
 %     optimization features due to the use of fmincon for sequential 
 %     quadratic programming (SQP). 
 %   In Octave, set ALLOC = 0 for static optimization using constant 
-%     azimuth angles to minimize the condition number of the thruster 
-%     configuration matrix T(alpha).
+%     azimuth angles to minimize the condition number of the matrix 
+%     T(alpha) * K_max inverted by the allocation.
 %
 % Main Functions Called:
 %   fmincon.m            - For dynamic optimization using SQP.
@@ -51,6 +51,7 @@ function SIMosv()
 % Date:      2024-03-25
 % Revisions:
 %   2024-07-10: Improved numerical accuracy by replacing Euler's method with RK4
+%   2026-10-09: Comments: alpha0 minimizes the condition number of T_thr * K_max
 
 clear osv;              % Clear persistent vessel structure 'vessel'
 clear PIDnonlinearMIMO; % Clear persistent variables from previous sessions
@@ -62,7 +63,7 @@ osv;                    % Initialize or display the OSV's main data
 ALLOC = 1;                   % 0 - Use constant azimuth angles
                              % 1 - Dynamic optimization (MATLAB only)
 
-% Constant azimuth angles minimizing the condition number of T_thr                             
+% Constant azimuth angles minimizing the condition number of T_thr * K_max
 alpha0 = deg2rad([-28; 28]); 
 
 % Define simulation parameters
