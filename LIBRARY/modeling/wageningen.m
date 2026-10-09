@@ -21,7 +21,7 @@ function [KT, KQ] = wageningen(Ja,PD,AEAO,z)
 % coefficient.
 %
 % Reference: 
-%   Barnitsas, M.M., Ray, D. and Kinley, P. (1981).
+%   Bernitsas, M.M., Ray, D. and Kinley, P. (1981).
 %   KT, KQ and Efficiency Curves for the Wageningen B-Series Propellers
 %   http://deepblue.lib.umich.edu/handle/2027.42/3557
 %
@@ -29,6 +29,7 @@ function [KT, KQ] = wageningen(Ja,PD,AEAO,z)
 % Date:      7 October 2018
 % Revisions: 
 %   18 June 2019 - minor updates
+%   2026-10-09 - corrected the spelling Bernitsas in the reference
 
 load('WageningData.mat');
     

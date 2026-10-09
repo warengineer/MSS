@@ -10,7 +10,7 @@
 % coefficient.
 %
 % Reference: 
-%   Barnitsas, M.M., Ray, D. and Kinley, P. (1981).
+%   Bernitsas, M.M., Ray, D. and Kinley, P. (1981).
 %   KT, KQ, and Efficiency Curves for the Wageningen B-Series Propellers
 %   http://deepblue.lib.umich.edu/handle/2027.42/3557
 %
@@ -18,6 +18,7 @@
 % Date:      7 October 2018
 % Revisions: 
 %   18 June 2019 - added curve fitting of KT and KQ data
+%   2026-10-09 - corrected the spelling Bernitsas in the reference
 clearvars
 
 rho = 1025;   % Density of water (kg/m^3)
