@@ -103,6 +103,8 @@ function vessel = wamit2vessel(filename,T_draught,Lpp,Boa,plot_flag)
 %            2023-04-17 Added a correction for LCF when computing GM_L
 %            2026-09-27 Removed viscous.m; power-based viscous damping is
 %                       computed separately by computeManeuveringModel
+%            2026-10-09 GM_L about the CF: C55 in the CO includes
+%                       rho*g*Awp*LCF^2 = C35^2/C33
 
 %%
 if ~exist('plot_flag')
@@ -355,7 +357,13 @@ if exist([filename '.out'])
             end
             
             vessel.main.GM_T  = C_wamit(4,4) / (vessel.main.m*vessel.main.g);
-            vessel.main.GM_L  = C_wamit(5,5) / (vessel.main.m*vessel.main.g);
+            % GM_L about the CF: C55 in the CO includes rho*g*Awp*LCF^2,
+            % where rho*g*Awp = C33 and LCF = -C35/C33
+            C55_CF = C_wamit(5,5);
+            if C_wamit(3,3) > 0
+                C55_CF = C55_CF - C_wamit(3,5)^2 / C_wamit(3,3);
+            end
+            vessel.main.GM_L  = C55_CF / (vessel.main.m*vessel.main.g);
 
             if vessel.main.GM_T < 0
                 disp(['Error: GM_T = ' num2str(vessel.main.GM_T) ' < 0']);
