@@ -9,6 +9,7 @@ function [xn,yn,zn] = llh2flat(l,mu,h,l0,mu0,h_ref)
 % Author:    Thor I. Fossen
 % Date:      20 July 2018
 % Revisions: 2023-02-04 updatet the formulas for latitude and longitude
+%            2026-10-09 dl = ssa(l - l0) across the 180 deg meridian
 %
 % Reference: 
 % J. Farrell (2008). Aided Navigation: GPS with High Rate Sensors, 
@@ -19,7 +20,7 @@ a = 6378137;             % Semi-major axis (equitorial radius)
 f = 1 / 298.257223563;   % Flattening 
 e = sqrt( 2*f - f^2 );   % Earth eccentricity
 
-dl = l - l0;
+dl = ssa(l - l0);
 dmu = mu - mu0;
 
 Rn = a / sqrt( 1-e^2 * sin(mu0)^2 );
