@@ -5,6 +5,7 @@
 % Date:      11 July 2002
 % Revisions: 
 %   20 Dec 2009   - Minor modifications
+%   2026-10-09    - T = diag([1 1 1/L]), Tinv = diag([1 1 L]) as in supply.m (were swapped)
 
 format compact
 disp('Controllability and observability of offShore supply vessel length 76 m')
@@ -14,8 +15,8 @@ L   =  76.2;           % Length of ship (m)
 g   =  9.8;            % Acceleration of gravity (m/s^2)
 m   = 6000e3;          % Mass (kg)
 
-T    = diag([1 1 L]);
-Tinv = diag([1 1 1/L]);
+T    = diag([1 1 1/L]);       % bis scaling, as in supply.m
+Tinv = diag([1 1 L]);
 
 % Model matricses
 Mbis = [1.1274         0          0

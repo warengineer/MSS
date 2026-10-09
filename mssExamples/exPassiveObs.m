@@ -1,4 +1,4 @@
-% The script plots the loop transfer function of the passive observer in
+% The script plots the loop transfer function of the passive observer
 % for dynamic positioning.
 
 clear;
