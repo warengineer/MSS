@@ -1,7 +1,7 @@
 function [xdot,U] = tanker(x,ui)
 % [xdot,U] = tanker(x,ui) returns the speed U in m/s (optionally) and the 
 % time derivative of the state vector: x = [ u v r x y psi delta n ]'  for
-% a the Esso 190,000-dwt tanker L = 304.8 m (Berlekom and Goddhard 1972, 
+% the Esso 190,000-dwt tanker L = 304.8 m (Van Berlekom and Goddard 1972, 
 % Appendix A) where
 %
 %   u:     surge velocity, must be positive (m/s) - design speed u = 8.23 m/s
@@ -22,7 +22,7 @@ function [xdot,U] = tanker(x,ui)
 %   h:       water depth, must be larger than draft (m) - draft is 18.46 m
 %
 % Reference: 
-%   W. B. Van Berlekom and T. A. and Goddard (1972). Maneuvering of Large
+%   W. B. Van Berlekom and T. A. Goddard (1972). Maneuvering of Large
 %     Tankers, Transaction of SNAME, 80:264-298
 %
 % Author:    Trygve Lauvdal
@@ -33,6 +33,8 @@ function [xdot,U] = tanker(x,ui)
 %                c = sqrt(cun^2*u*n + cnn^2*n^2) to 
 %                c = sqrt(cun*u*n + cnn*n^2)
 %   2024-04-19 : Added compability to GNU Octave.
+%   2026-10-09 : Corrected the reference in the header and the depth
+%                error message (the draft is T = 18.46 m).
 
 if (length(x)  ~= 8),error('x-vector must have dimension 8!'); end
 if (length(ui) ~= 3),error('u-vector must have dimension 3!'); end
@@ -92,7 +94,7 @@ Xvvzz  =  0.0125;   Yccbbd = -2.16;   Nccbbd  =  0.688;
 % Additional terms in shallow water
 z = T / (h - T);
 if h < 18.5 
-    error('The depth must be larger than the draft (18.5 m)'); 
+    error('The depth must be at least 18.5 m (draft T = 18.46 m)'); 
 end
 if z >= 0.8
     Yuvz = -0.85 * (1 - 0.8/z);
