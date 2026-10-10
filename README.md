@@ -1,3 +1,7 @@
+> **Branch `course-v1.0`:** the version of MSS used by the course *Marine Craft Hydrodynamics and Motion Control*
+> (Prof. Dr. Serhat YILMAZ, Volkan AKILLI). It is upstream commit 724f267c36 with 27 small corrections, one commit
+> each; [COURSE_CHANGES.md](COURSE_CHANGES.md) lists them, together with observations that are not changed.
+
 # MSS (Marine Systems Simulator)
 
 The Marine Systems Simulator (MSS) is a MATLAB library (www.mathworks.com) for designing and testing marine control systems. The m-files are compatible with the free software GNU Octave (www.octave.org). MSS includes models for ships, underwater vehicles, uncrewed surface vehicles, and floating structures. The library also contains guidance, navigation, and control (GNC) functions for time-domain simulation.
